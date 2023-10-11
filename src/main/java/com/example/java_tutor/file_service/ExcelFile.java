@@ -22,6 +22,5 @@ public class ExcelFile {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("file was created");
     }
 }

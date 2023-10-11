@@ -22,20 +22,6 @@ public class ExcelService {
     @Autowired
     private SingletonExcel singletonExcel;
 
-//    private static final String PATH = "/Users/kirillmukhortov/ideaProjects/java_tutor/addresses.xlsx";
-//    private static final String PATH;
-
-//    static {
-//        try {
-//            String path = JarFile.getDirectoryPath(JavaTutorApplication.class);
-//            if (!ExcelFile.exists(path, "addresses")) {
-//                ExcelFile.create(path, "addresses", "sheet1");
-//            }
-//            PATH = path + "/addresses.xlsx";
-//        } catch (URISyntaxException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
 
     public LinkedList<Address> getAddresses() {
         LinkedList<Address> linkedList = new LinkedList<>();

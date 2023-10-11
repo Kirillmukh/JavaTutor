@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import java.util.LinkedList;
 
 @Component
-@Scope("singleton")
 public class SingletonArray {
 
     @Getter
