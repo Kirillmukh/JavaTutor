@@ -20,7 +20,7 @@ public class SingletonArray {
         array = new LinkedList<>();
     }
 
-    public static synchronized SingletonArray getInstance() {
+    public static SingletonArray getInstance() {
         if (instance == null) {
             instance = new SingletonArray();
         }

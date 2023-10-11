@@ -19,7 +19,7 @@ public class SingletonExcel {
     @Getter
     @Setter
     private String sheetName;
-    private SingletonExcel instance;
+    private static SingletonExcel instance;
 
     private SingletonExcel() {
         sheetName = "sheet1";
@@ -36,7 +36,7 @@ public class SingletonExcel {
         }
     }
 
-    public SingletonExcel getInstance() {
+    public static SingletonExcel getInstance() {
         if (instance == null) {
             instance = new SingletonExcel();
         }
