@@ -31,7 +31,7 @@ public class SingletonExcel {
             if (!ExcelFile.exists(path, fileName)) {
                 ExcelFile.create(path, fileName, sheetName);
             }
-            this.path = path + fileName + "xlsx";
+            this.path = path + fileName + ".xlsx";
 
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);

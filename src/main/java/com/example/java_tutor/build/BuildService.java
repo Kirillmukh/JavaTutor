@@ -7,7 +7,7 @@ import com.example.java_tutor.file_service.TargetDirectory;
 import java.net.URISyntaxException;
 
 public class BuildService {
-    public static final boolean BUILD_BY_TARGET = true;
+    private static final boolean BUILD_BY_TARGET = true;
 
     public static String getPath() throws URISyntaxException {
         if (BUILD_BY_TARGET) {
