@@ -1,7 +1,8 @@
 package com.example.java_tutor.entity;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 @Data
@@ -11,6 +12,6 @@ public class Address {
     private String address;
 
     public Address(String address) {
-        this.address = address;
+        string = address;
     }
 }

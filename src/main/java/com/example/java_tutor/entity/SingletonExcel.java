@@ -1,10 +1,9 @@
 package com.example.java_tutor.entity;
 
-import com.example.java_tutor.JavaTutorApplication;
 import com.example.java_tutor.build.BuildService;
+import com.example.java_tutor.exceptions.HSSFWorkbookNotClosedException;
+import com.example.java_tutor.exceptions.XLSXNotCreatedException;
 import com.example.java_tutor.file_service.ExcelFile;
-import com.example.java_tutor.file_service.JarFile;
-import com.example.java_tutor.file_service.TargetDirectory;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
@@ -23,22 +22,18 @@ public class SingletonExcel {
     private String sheetName;
     private static SingletonExcel instance;
 
-    private SingletonExcel() {
+    private SingletonExcel() throws URISyntaxException, XLSXNotCreatedException, HSSFWorkbookNotClosedException {
         sheetName = "sheet1";
         fileName = "addresses";
-        try {
-            String path = BuildService.getPath();
-            if (!ExcelFile.exists(path, fileName)) {
-                ExcelFile.create(path, fileName, sheetName);
-            }
-            this.path = path + fileName + ".xlsx";
-
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
+        String path = BuildService.getPath();
+        if (!ExcelFile.exists(path, fileName)) {
+            ExcelFile.create(path, fileName, sheetName);
         }
+        this.path = path + fileName + ".xlsx";
+
     }
 
-    public static SingletonExcel getInstance() {
+    public static SingletonExcel getInstance() throws XLSXNotCreatedException, HSSFWorkbookNotClosedException, URISyntaxException {
         if (instance == null) {
             instance = new SingletonExcel();
         }
