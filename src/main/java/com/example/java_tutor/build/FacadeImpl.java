@@ -1,7 +1,7 @@
 package com.example.java_tutor.build;
 
 import com.example.java_tutor.entity.Address;
-import com.example.java_tutor.entity.Addresses;
+import com.example.java_tutor.entity.AddressesList;
 import com.example.java_tutor.exceptions.HSSFWorkbookNotClosedException;
 import com.example.java_tutor.exceptions.JSONException;
 import com.example.java_tutor.exceptions.XLSXReadingException;
@@ -25,20 +25,22 @@ public class FacadeImpl implements Facade {
 
     @Override
     public List<Address> getAddress(final String json) throws JSONException, XLSXReadingException, HSSFWorkbookNotClosedException {
-        Addresses addresses = jsonService.getAddresses(json);
+        AddressesList addresses = jsonService.getAddresses(json);
         List<Address> oldAddresses = excelService.getAddresses();
-        List<Address> newAddresses = addresses.getAddressesList();
-        List<Address> addressList = addressService.getAddressesByLists(oldAddresses, newAddresses);
+        List<Address> newAddresses = addresses.getAddresses();
+        List<Address> addressList = addressService.mergeLists(oldAddresses, newAddresses);
+        System.out.println(addressList);
         excelService.sendAddresses(addressList);
         return addressList;
 
     }
 
     @Override
-    public List<Address> removeAddress(final String json) throws JSONException, XLSXReadingException {
+    public List<Address> removeAddress(final String json) throws JSONException, XLSXReadingException, HSSFWorkbookNotClosedException {
         Address address = jsonService.getAddress(json);
         List<Address> addressList = excelService.getAddresses();
-        addressList.remove(address);
+        addressList = addressService.deleteAddress(addressList, address);
+        excelService.sendAddresses(addressList);
         return addressList;
     }
 }

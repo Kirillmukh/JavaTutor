@@ -13,7 +13,7 @@ import java.net.URISyntaxException;
 @Component
 public class SingletonExcel {
     @Getter
-    private final String path;
+    private final String absolutePath;
     @Getter
     @Setter
     private String fileName;
@@ -29,7 +29,7 @@ public class SingletonExcel {
         if (!ExcelFile.exists(path, fileName)) {
             ExcelFile.create(path, fileName, sheetName);
         }
-        this.path = path + fileName + ".xlsx";
+        absolutePath = path + fileName + ".xlsx";
 
     }
 

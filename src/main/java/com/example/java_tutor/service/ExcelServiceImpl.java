@@ -28,7 +28,7 @@ public class ExcelServiceImpl implements ExcelService {
     @Override
     public List<Address> getAddresses() throws XLSXReadingException {
         LinkedList<Address> linkedList = new LinkedList<>();
-        try (HSSFWorkbook workbook = new HSSFWorkbook(new FileInputStream(singletonExcel.getPath()))) {
+        try (HSSFWorkbook workbook = new HSSFWorkbook(new FileInputStream(singletonExcel.getAbsolutePath()))) {
             HSSFSheet sheet = workbook.getSheet(singletonExcel.getSheetName());
             for (Row row : sheet) {
                 Cell cell = row.getCell(0);
@@ -51,9 +51,9 @@ public class ExcelServiceImpl implements ExcelService {
             list.forEach(address -> {
                 Row row = sheet.createRow(i.getAndIncrement());
                 Cell cell = row.createCell(0);
-                cell.setCellValue(address.getString());
+                cell.setCellValue(address.getAddress());
             });
-            FileOutputStream fileOutputStream = new FileOutputStream(singletonExcel.getPath());
+            FileOutputStream fileOutputStream = new FileOutputStream(singletonExcel.getAbsolutePath());
             workbook.write(fileOutputStream);
         } catch (IOException e) {
             throw new HSSFWorkbookNotClosedException(e);

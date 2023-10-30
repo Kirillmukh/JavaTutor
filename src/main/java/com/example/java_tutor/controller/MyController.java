@@ -24,7 +24,7 @@ public class MyController {
     }
 
     @PostMapping("/addresses/delete")
-    public List<Address> removeAddress(@RequestBody String json) throws XLSXReadingException, JSONException {
+    public List<Address> removeAddress(@RequestBody String json) throws XLSXReadingException, JSONException, HSSFWorkbookNotClosedException {
         return facade.removeAddress(json);
     }
 }

@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface Facade {
     public List<Address> getAddress(final String json) throws JSONException, XLSXReadingException, HSSFWorkbookNotClosedException;
-    public List<Address> removeAddress(final String json) throws JSONException, XLSXReadingException;
+    public List<Address> removeAddress(final String json) throws JSONException, XLSXReadingException, HSSFWorkbookNotClosedException;
 }
