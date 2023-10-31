@@ -29,7 +29,6 @@ public class FacadeImpl implements Facade {
         List<Address> oldAddresses = excelService.getAddresses();
         List<Address> newAddresses = addresses.getAddresses();
         List<Address> addressList = addressService.mergeLists(oldAddresses, newAddresses);
-        System.out.println(addressList);
         excelService.sendAddresses(addressList);
         return addressList;
 
