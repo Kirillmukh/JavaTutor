@@ -7,13 +7,16 @@ import java.net.URL;
 import java.nio.file.Paths;
 
 public class TargetDirectory {
-    public static String getClassesPath(Class clazz) throws URISyntaxException {
-        URL url = clazz.getProtectionDomain().getCodeSource().getLocation();
+
+    private TargetDirectory() {}
+
+    public static String getClassesPath() throws URISyntaxException {
+        URL url = JavaTutorApplication.class.getProtectionDomain().getCodeSource().getLocation();
         return Paths.get(url.toURI()).toString();
     }
 
-    public static String getTargetPath(Class clazz) throws URISyntaxException {
-        String filePath = getClassesPath(clazz);
+    public static String getTargetPath() throws URISyntaxException {
+        String filePath = getClassesPath();
         return filePath.substring(0, 1 + filePath.lastIndexOf("/"));
     }
 }

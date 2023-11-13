@@ -7,8 +7,11 @@ import java.net.URL;
 import java.nio.file.Paths;
 
 public class JarFile {
-    public static String getFilePath(Class clazz) throws URISyntaxException {
-        URL url = clazz.getProtectionDomain().getCodeSource().getLocation();
+
+    private JarFile() {}
+
+    public static String getFilePath() throws URISyntaxException {
+        URL url = JavaTutorApplication.class.getProtectionDomain().getCodeSource().getLocation();
         return Paths.get(url.toURI()).toString();
     }
 

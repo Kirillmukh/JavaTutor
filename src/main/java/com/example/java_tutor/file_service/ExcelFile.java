@@ -9,7 +9,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class ExcelFile {
-    public static boolean exists(String path, String fileName) throws URISyntaxException {
+
+    private final static String SEPARATOR = "/";
+
+    private ExcelFile() {
+    }
+
+    public static boolean exists(String path, String fileName) {
         File file = new File(path + fileName + ".xlsx");
         return file.exists();
     }
