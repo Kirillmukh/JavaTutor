@@ -15,7 +15,7 @@ public class AddressServiceImpl implements AddressService {
         templateList.addAll(list2);
         List<String> strings = templateList.stream()
                 .filter(Objects::nonNull)
-                .map(Address::getAddress)
+                .map(Address::getValue)
                 .filter(Objects::nonNull)
                 .distinct()
                 .toList();
@@ -24,8 +24,8 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public List<Address> deleteAddress(List<Address> addresses, Address address) {
-        List<String> strings = addresses.stream().map(Address::getAddress).collect(Collectors.toList());
-        strings.remove(address.getAddress());
+        List<String> strings = addresses.stream().map(Address::getValue).collect(Collectors.toList());
+        strings.remove(address.getValue());
         return getAddressesListByStrings(strings);
     }
 

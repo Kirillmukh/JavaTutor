@@ -51,7 +51,7 @@ public class ExcelServiceImpl implements ExcelService {
             list.forEach(address -> {
                 Row row = sheet.createRow(i.getAndIncrement());
                 Cell cell = row.createCell(0);
-                cell.setCellValue(address.getAddress());
+                cell.setCellValue(address.getValue());
             });
             FileOutputStream fileOutputStream = new FileOutputStream(singletonExcel.getAbsolutePath());
             workbook.write(fileOutputStream);
