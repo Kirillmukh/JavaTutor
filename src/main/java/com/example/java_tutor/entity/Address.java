@@ -12,6 +12,6 @@ public class Address {
 
     @Getter
     @Setter
-    @JsonSetter
+    @JsonSetter("address")
     private String value;
 }
